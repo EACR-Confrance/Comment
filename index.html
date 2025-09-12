@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EACR Confrance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #93c5fd;
+            --primary-bg: #eff6ff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #e6eeff 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 160px;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .header-logo img {
+            height: 50px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            z-index: 1;
+        }
+        
+        .btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background-color: #e6eeff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-danger {
+            background-color: var(--error);
+            color: var(--white);
+        }
+        
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+        
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            z-index: 1;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--white);
+            box-shadow: var(--shadow);
+        }
+        
+        .container {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary-color));
+        }
+        
+        h1 {
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary-color));
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-200);
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .comment-form {
+            margin-bottom: 30px;
+            background: var(--gray-100);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: var(--white);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .comments-stats {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .comments-sort {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-weight: 500;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .comments-sort:hover {
+            background-color: var(--gray-100);
+            color: var(--primary-color);
+        }
+        
+        .comment-card {
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .comment-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+        
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .comment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gray-200);
+            box-shadow: var(--shadow);
+        }
+        
+        .comment-author-info {
+            flex: 1;
+        }
+        
+        .comment-author {
+            font-weight: 600;
+            font-size: 17px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .admin-badge {
+            background-color: var(--error);
+            color: var(--white);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .comment-date {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 3px;
+        }
+        
+        .comment-text {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            padding: 0 10px;
+        }
+        
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .comment-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-light);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .comment-action:hover {
+            background-color: var(--gray-100);
+            color: var(--primary-color);
+        }
+        
+        .comment-action.liked {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .comment-action-count {
+            font-weight: 600;
+            margin-right: 3px;
+        }
+        
+        .replies {
+            margin-right: 40px;
+            margin-top: 20px;
+            padding-right: 15px;
+            border-right: 2px solid var(--gray-200);
+        }
+        
+        .reply-form {
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .reply-form.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-light);
+        }
+        
+        .no-comments {
+            text-align: center;
+            padding: 40px 30px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .alert {
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .alert-error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.2s;
+        }
+        
+        .close-modal:hover {
+            color: var(--error);
+        }
+        
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .comments-stats {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .replies {
+                margin-right: 20px;
+            }
+            
+            .comment-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .comment-actions {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="header-logo">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9rhgPtuooaGs_nb76bjyyvT8xkUUuvkwbxG3YjZorCEXP1suduZp7b9Q3pv4qbaa3NwL5vnjVYRYxHGF7im6ABCwP-IL0wAHkyVTHBB2A0xoCMSDsNRDpKjmcmNnTw2DT8d7FQ0zvzXNr0XmOaX95M8uvmeKWGrNVtVvP6Z-0fjIxKIlDueLHkJrNB5g/s1150/1021.jpg" alt="شعار النظام">
+            </div>
+            
+            <div id="authSection">
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="openModal('loginModal')">
+                        <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                    </button>
+                    <button class="btn" onclick="openModal('registerModal')">
+                        <i class="fas fa-user-plus"></i> إنشاء حساب
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h1>EACR Confrance</h1>
+            
+            <div id="alertBox" class="alert"></div>
+            
+            <div class="comment-form" id="commentFormSection" style="display: none;">
+                <h2>أضف تعليقاً</h2>
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="comment">التعليق</label>
+                        <textarea id="comment" class="form-control" required placeholder="اكتب تعليقك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> نشر التعليق
+                    </button>
+                </form>
+            </div>
+            
+            <div class="comments-section">
+                <div class="comments-stats">
+                    <h2>التعليقات <span id="commentsCount">(0)</span></h2>
+                    <button class="comments-sort" id="sortButton">
+                        <i class="fas fa-sort"></i> الأحدث
+                    </button>
+                </div>
+                
+                <div id="commentsContainer">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> جاري تحميل التعليقات...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal لتسجيل الدخول -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تسجيل الدخول</h2>
+                <button class="close-modal" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" class="form-control" required placeholder="ادخل بريدك الإلكتروني">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">كلمة المرور</label>
+                    <input type="password" id="loginPassword" class="form-control" required placeholder="ادخل كلمة المرور">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal لإنشاء حساب -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>إنشاء حساب جديد</h2>
+                <button class="close-modal" onclick="closeModal('registerModal')">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">الاسم</label>
+                    <input type="text" id="registerName" class="form-control" required placeholder="ادخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">البريد الإلكتروني</label>
+                    <input type="email" id="registerEmail" class="form-control" required placeholder="ادخل بريدك الإلكتروني">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">كلمة المرور</label>
+                    <input type="password" id="registerPassword" class="form-control" required placeholder="اختر كلمة مرور">
+                </div>
+                <div class="form-group">
+                    <label for="registerAvatar">رابط الصورة الشخصية (اختياري)</label>
+                    <input type="url" id="registerAvatar" class="form-control" 
+                           placeholder="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9rhgPtuooaGs_nb76bjyyvT8xkUUuvkwbxG3YjZorCEXP1suduZp7b9Q3pv4qbaa3NwL5vnjVYRYxHGF7im6ABCwP-IL0wAHkyVTHBB2A0xoCMSDsNRDpKjmcmNnTw2DT8d7FQ0zvzXNr0XmOaX95M8uvmeKWGrNVtVvP6Z-0fjIxKIlDueLHkJrNB5g/s1150/1021.jpg">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-user-plus"></i> إنشاء حساب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDWbNnsm1xpaanEkypEEvjrHHosNj713YY",
+            authDomain: "commnt-a9855.firebaseapp.com",
+            databaseURL: "https://commnt-a9855-default-rtdb.firebaseio.com",
+            projectId: "commnt-a9855",
+            storageBucket: "commnt-a9855.firebasestorage.app",
+            messagingSenderId: "1077378702730",
+            appId: "1:1077378702730:web:d0fece55ac909fb7ac3c73",
+            measurementId: "G-N3CC6KTGY1"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        
+        // Reference to the comments in the database
+        const commentsRef = database.ref('comments');
+        
+        // بيانات المستخدمين (سيتم حفظها في localStorage)
+        let users = JSON.parse(localStorage.getItem('commentSystemUsers')) || [];
+        
+        // المستخدم الحالي
+        let currentUser = JSON.parse(localStorage.getItem('commentSystemCurrentUser')) || null;
+        
+        // إعدادات النظام
+        const ADMIN_EMAIL = 'mozogohary47@gmail.com';
+        const ADMIN_PASSWORD = 'gohary';
+        
+        // عناصر DOM
+        const authSection = document.getElementById('authSection');
+        const commentFormSection = document.getElementById('commentFormSection');
+        const commentsContainer = document.getElementById('commentsContainer');
+        const commentsCount = document.getElementById('commentsCount');
+        const sortButton = document.getElementById('sortButton');
+        const alertBox = document.getElementById('alertBox');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const commentForm = document.getElementById('commentForm');
+        
+        let sortNewestFirst = true;
+        
+        // تهيئة التطبيق
+        function initApp() {
+            // التحقق من وجود المستخدم الحالي
+            if (currentUser) {
+                updateAuthUI();
+            }
+            
+            // تحميل التعليقات من Firebase
+            loadComments();
+            
+            // إضافة مستخدم الأدمن إذا لم يكن موجوداً
+            const adminExists = users.some(user => user.email === ADMIN_EMAIL);
+            if (!adminExists) {
+                users.push({
+                    name: 'مدير النظام',
+                    email: ADMIN_EMAIL,
+                    password: ADMIN_PASSWORD,
+                    avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+                    isAdmin: true
+                });
+                saveUsers();
+            }
+        }
+        
+        // حفظ المستخدمين في localStorage
+        function saveUsers() {
+            localStorage.setItem('commentSystemUsers', JSON.stringify(users));
+        }
+        
+        // حفظ المستخدم الحالي في localStorage
+        function saveCurrentUser() {
+            localStorage.setItem('commentSystemCurrentUser', JSON.stringify(currentUser));
+        }
+        
+        // تحميل التعليقات من Firebase
+        function loadComments() {
+            commentsContainer.innerHTML = `
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> جاري تحميل التعليقات...
+                </div>
+            `;
+            
+            commentsRef.on('value', (snapshot) => {
+                const commentsData = snapshot.val();
+                renderComments(commentsData);
+            }, (error) => {
+                commentsContainer.innerHTML = `
+                    <div class="no-comments">
+                        حدث خطأ في تحميل التعليقات: ${error.message}
+                    </div>
+                `;
+            });
+        }
+        
+        // عرض رسالة تنبيه
+        function showAlert(message, type) {
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type}`;
+            alertBox.style.display = 'block';
+            
+            // إخفاء التنبيه بعد 5 ثواني
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+        
+        // فتح Modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        // إغلاق Modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // تحديث واجهة المستخدم حسب حالة التسجيل
+        function updateAuthUI() {
+            if (currentUser) {
+                // إذا كان المستخدم مسجلاً
+                authSection.innerHTML = `
+                    <div class="user-info">
+                        <img src="${currentUser.avatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}" 
+                             class="user-avatar" alt="صورة المستخدم">
+                        <span>${currentUser.name}</span>
+                        ${currentUser.isAdmin ? '<span class="admin-badge">ADMIN</span>' : ''}
+                        <button class="btn btn-outline" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                        </button>
+                    </div>
+                `;
+                commentFormSection.style.display = 'block';
+            } else {
+                // إذا لم يكن المستخدم مسجلاً
+                authSection.innerHTML = `
+                    <div class="auth-buttons">
+                        <button class="btn btn-outline" onclick="openModal('loginModal')">
+                            <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                        </button>
+                        <button class="btn" onclick="openModal('registerModal')">
+                            <i class="fas fa-user-plus"></i> إنشاء حساب
+                        </button>
+                    </div>
+                `;
+                commentFormSection.style.display = 'none';
+            }
+        }
+        
+        // تسجيل الدخول
+        function login(email, password) {
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                saveCurrentUser();
+                updateAuthUI();
+                closeModal('loginModal');
+                showAlert(`مرحباً بعودتك ${user.name}`, 'success');
+                return true;
+            } else {
+                showAlert('البريد الإلكتروني أو كلمة المرور غير صحيحة', 'error');
+                return false;
+            }
+        }
+        
+        // تسجيل الخروج
+        function logout() {
+            currentUser = null;
+            saveCurrentUser();
+            updateAuthUI();
+            showAlert('تم تسجيل الخروج بنجاح', 'success');
+        }
+        
+        // إنشاء حساب جديد
+        function register(name, email, password, avatar) {
+            // التحقق من عدم وجود حساب بنفس البريد الإلكتروني
+            const userExists = users.some(u => u.email === email);
+            
+            if (userExists) {
+                showAlert('هذا البريد الإلكتروني مستخدم بالفعل', 'error');
+                return false;
+            }
+            
+            // إنشاء المستخدم الجديد
+            const newUser = {
+                name,
+                email,
+                password,
+                avatar: avatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+                isAdmin: email === ADMIN_EMAIL
+            };
+            
+            users.push(newUser);
+            saveUsers();
+            
+            // تسجيل الدخول تلقائياً
+            currentUser = newUser;
+            saveCurrentUser();
+            updateAuthUI();
+            closeModal('registerModal');
+            showAlert(`تم إنشاء حسابك بنجاح ${name}`, 'success');
+            return true;
+        }
+        
+        // إضافة تعليق جديد إلى Firebase
+        function addComment(text) {
+            if (!currentUser) {
+                showAlert('يجب تسجيل الدخول أولاً', 'error');
+                return;
+            }
+            
+            const newComment = {
+                userId: currentUser.email,
+                userName: currentUser.name,
+                userAvatar: currentUser.avatar,
+                text: text,
+                timestamp: Date.now(),
+                likes: 0,
+                likedBy: {},
+                replies: {}
+            };
+            
+            commentsRef.push(newComment)
+                .then(() => {
+                    showAlert('تم إضافة تعليقك بنجاح', 'success');
+                    document.getElementById('comment').value = '';
+                })
+                .catch((error) => {
+                    showAlert('حدث خطأ أثناء إضافة التعليق: ' + error.message, 'error');
+                });
+        }
+        
+        // إضافة رد إلى تعليق في Firebase
+        function addReply(commentId, text) {
+            if (!currentUser) {
+                showAlert('يجب تسجيل الدخول أولاً', 'error');
+                return;
+            }
+            
+            const newReply = {
+                userId: currentUser.email,
+                userName: currentUser.name,
+                userAvatar: currentUser.avatar,
+                text: text,
+                timestamp: Date.now()
+            };
+            
+            const replyRef = database.ref(`comments/${commentId}/replies`);
+            replyRef.push(newReply)
+                .then(() => {
+                    showAlert('تم إضافة ردك بنجاح', 'success');
+                    // إخفاء نموذج الرد
+                    document.getElementById(`replyForm-${commentId}`).style.display = 'none';
+                })
+                .catch((error) => {
+                    showAlert('حدث خطأ أثناء إضافة الرد: ' + error.message, 'error');
+                });
+        }
+        
+        // الإعجاب بالتعليق في Firebase
+        function likeComment(commentId, currentLikes, likedBy) {
+            if (!currentUser) {
+                showAlert('يجب تسجيل الدخول أولاً', 'error');
+                return;
+            }
+            
+            const userEmail = currentUser.email;
+            const alreadyLiked = likedBy && likedBy[userEmail];
+            
+            const updates = {};
+            if (alreadyLiked) {
+                // إلغاء الإعجاب
+                updates[`comments/${commentId}/likes`] = currentLikes - 1;
+                updates[`comments/${commentId}/likedBy/${userEmail}`] = null;
+            } else {
+                // إضافة إعجاب
+                updates[`comments/${commentId}/likes`] = currentLikes + 1;
+                updates[`comments/${commentId}/likedBy/${userEmail}`] = true;
+            }
+            
+            database.ref().update(updates)
+                .catch((error) => {
+                    showAlert('حدث خطأ: ' + error.message, 'error');
+                });
+        }
+        
+        // حذف تعليق من Firebase (للأدمن فقط)
+        function deleteComment(commentId) {
+            if (!currentUser || !currentUser.isAdmin) {
+                showAlert('ليس لديك صلاحية لحذف التعليقات', 'error');
+                return;
+            }
+            
+            if (!confirm('هل أنت متأكد من حذف هذا التعليق؟')) {
+                return;
+            }
+            
+            const commentRef = database.ref(`comments/${commentId}`);
+            commentRef.remove()
+                .then(() => {
+                    showAlert('تم حذف التعليق بنجاح', 'success');
+                })
+                .catch((error) => {
+                    showAlert('حدث خطأ أثناء حذف التعليق: ' + error.message, 'error');
+                });
+        }
+        
+        // حذف رد من Firebase (للأدمن فقط)
+        function deleteReply(commentId, replyId) {
+            if (!currentUser || !currentUser.isAdmin) {
+                showAlert('ليس لديك صلاحية لحذف الردود', 'error');
+                return;
+            }
+            
+            if (!confirm('هل أنت متأكد من حذف هذا الرد؟')) {
+                return;
+            }
+            
+            const replyRef = database.ref(`comments/${commentId}/replies/${replyId}`);
+            replyRef.remove()
+                .then(() => {
+                    showAlert('تم حذف الرد بنجاح', 'success');
+                })
+                .catch((error) => {
+                    showAlert('حدث خطأ أثناء حذف الرد: ' + error.message, 'error');
+                });
+        }
+        
+        // عرض التعليقات من بيانات Firebase
+        function renderComments(commentsData) {
+            if (!commentsData || Object.keys(commentsData).length === 0) {
+                commentsContainer.innerHTML = '<div class="no-comments">لا توجد تعليقات بعد. كن أول من يعلق!</div>';
+                commentsCount.textContent = '(0)';
+                return;
+            }
+            
+            // تحويل بيانات Firebase إلى مصفوفة
+            const commentsArray = Object.entries(commentsData).map(([id, comment]) => {
+                return { id, ...comment };
+            });
+            
+            // ترتيب التعليقات
+            const sortedComments = [...commentsArray].sort((a, b) => {
+                return sortNewestFirst ? b.timestamp - a.timestamp : a.timestamp - b.timestamp;
+            });
+            
+            commentsCount.textContent = `(${sortedComments.length})`;
+            
+            let commentsHTML = '';
+            
+            sortedComments.forEach(comment => {
+                const isLiked = comment.likedBy && comment.likedBy[currentUser?.email];
+                const isAdmin = currentUser && currentUser.isAdmin;
+                const isCommentOwner = currentUser && currentUser.email === comment.userId;
+                
+                // معالجة الردود
+                let repliesHTML = '';
+                if (comment.replies && Object.keys(comment.replies).length > 0) {
+                    const repliesArray = Object.entries(comment.replies).map(([id, reply]) => {
+                        return { id, ...reply };
+                    });
+                    
+                    // ترتيب الردود من الأقدم إلى الأحدث
+                    repliesArray.sort((a, b) => a.timestamp - b.timestamp);
+                    
+                    repliesArray.forEach(reply => {
+                        repliesHTML += `
+                            <div class="comment-card" style="margin-right: 30px; border-left-color: #94a3b8;">
+                                <div class="comment-header">
+                                    <img src="${reply.userAvatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}" 
+                                         class="comment-avatar" alt="صورة المستخدم">
+                                    <div class="comment-author-info">
+                                        <div class="comment-author">${reply.userName}</div>
+                                        <div class="comment-date">${formatDate(reply.timestamp)}</div>
+                                    </div>
+                                    ${isAdmin ? `
+                                        <button class="btn btn-danger btn-sm" onclick="deleteReply('${comment.id}', '${reply.id}')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    ` : ''}
+                                </div>
+                                <div class="comment-text">${reply.text}</div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                commentsHTML += `
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <img src="${comment.userAvatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}" 
+                                 class="comment-avatar" alt="صورة المستخدم">
+                            <div class="comment-author-info">
+                                <div class="comment-author">
+                                    ${comment.userName}
+                                    ${comment.userId === ADMIN_EMAIL ? '<span class="admin-badge">ADMIN</span>' : ''}
+                                </div>
+                                <div class="comment-date">${formatDate(comment.timestamp)}</div>
+                            </div>
+                            ${(isAdmin || isCommentOwner) ? `
+                                <button class="btn btn-danger btn-sm" onclick="deleteComment('${comment.id}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            ` : ''}
+                        </div>
+                        <div class="comment-text">${comment.text}</div>
+                        <div class="comment-actions">
+                            <button class="comment-action ${isLiked ? 'liked' : ''}" 
+                                    onclick="likeComment('${comment.id}', ${comment.likes || 0}, ${JSON.stringify(comment.likedBy || {})})" 
+                                    ${!currentUser ? 'disabled' : ''}>
+                                <i class="fas fa-thumbs-up"></i> 
+                                <span class="comment-action-count">${comment.likes || 0}</span> إعجاب
+                            </button>
+                            <button class="comment-action" onclick="toggleReplyForm('${comment.id}')" ${!currentUser ? 'disabled' : ''}>
+                                <i class="fas fa-reply"></i> رد
+                            </button>
+                        </div>
+                        <div class="reply-form" id="replyForm-${comment.id}">
+                            <textarea class="form-control" id="replyText-${comment.id}" 
+                                      placeholder="اكتب ردك هنا..."></textarea>
+                            <button class="btn btn-primary" style="margin-top: 10px;" 
+                                    onclick="submitReply('${comment.id}')">
+                                <i class="fas fa-paper-plane"></i> إرسال الرد
+                            </button>
+                        </div>
+                        ${repliesHTML ? `<div class="replies">${repliesHTML}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            commentsContainer.innerHTML = commentsHTML;
+        }
+        
+        // تبديل عرض نموذج الرد
+        function toggleReplyForm(commentId) {
+            const replyForm = document.getElementById(`replyForm-${commentId}`);
+            const allReplyForms = document.querySelectorAll('.reply-form');
+            
+            allReplyForms.forEach(form => {
+                if (form.id !== `replyForm-${commentId}`) {
+                    form.style.display = 'none';
+                }
+            });
+            
+            replyForm.style.display = replyForm.style.display === 'block' ? 'none' : 'block';
+            
+            // التركيز على حقل النص عند فتح نموذج الرد
+            if (replyForm.style.display === 'block') {
+                setTimeout(() => {
+                    document.getElementById(`replyText-${commentId}`).focus();
+                }, 100);
+            }
+        }
+        
+        // إرسال رد
+        function submitReply(commentId) {
+            const replyText = document.getElementById(`replyText-${commentId}`).value.trim();
+            
+            if (!replyText) {
+                showAlert('يرجى كتابة رد', 'error');
+                return;
+            }
+            
+            addReply(commentId, replyText);
+            document.getElementById(`replyText-${commentId}`).value = '';
+        }
+        
+        // تنسيق التاريخ
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diffInSeconds = Math.floor((now - date) / 1000);
+            
+            if (diffInSeconds < 60) {
+                return `منذ ${diffInSeconds} ثانية`;
+            } else if (diffInSeconds < 3600) {
+                const minutes = Math.floor(diffInSeconds / 60);
+                return `منذ ${minutes} دقيقة`;
+            } else if (diffInSeconds < 86400) {
+                const hours = Math.floor(diffInSeconds / 3600);
+                return `منذ ${hours} ساعة`;
+            } else if (diffInSeconds < 2592000) {
+                const days = Math.floor(diffInSeconds / 86400);
+                return `منذ ${days} يوم`;
+            } else {
+                const months = Math.floor(diffInSeconds / 2592000);
+                return `منذ ${months} شهر`;
+            }
+        }
+        
+        // تبديل ترتيب التعليقات
+        function toggleSortOrder() {
+            sortNewestFirst = !sortNewestFirst;
+            sortButton.innerHTML = sortNewestFirst 
+                ? '<i class="fas fa-sort"></i> الأحدث' 
+                : '<i class="fas fa-sort"></i> الأقدم';
+            loadComments();
+        }
+        
+        // أحداث النماذج
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            login(email, password);
+        });
+        
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const avatar = document.getElementById('registerAvatar').value;
+            register(name, email, password, avatar);
+        });
+        
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const text = document.getElementById('comment').value.trim();
+            
+            if (!text) {
+                showAlert('يرجى كتابة تعليق', 'error');
+                return;
+            }
+            
+            addComment(text);
+        });
+        
+        sortButton.addEventListener('click', toggleSortOrder);
+        
+        // إغلاق Modal عند النقر خارج المحتوى
+        window.addEventListener('click', function(e) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+        
+        // تهيئة التطبيق عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
