@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EACR Confrance</title>
+    <title>نظام التعليقات المتطور</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -165,70 +165,6 @@
             box-shadow: var(--shadow);
         }
         
-        .user-menu {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .user-menu-toggle {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .user-menu-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .user-menu-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--white);
-            min-width: 160px;
-            box-shadow: var(--shadow-lg);
-            border-radius: 8px;
-            overflow: hidden;
-            z-index: 1000;
-            margin-top: 10px;
-        }
-        
-        .user-menu-dropdown.show {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .user-menu-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 16px;
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        
-        .user-menu-item:hover {
-            background: var(--primary-bg);
-            color: var(--primary-color);
-        }
-        
-        .user-menu-item.logout {
-            color: var(--error);
-            border-top: 1px solid var(--gray-200);
-        }
-        
-        .user-menu-item.logout:hover {
-            background: #fee2e2;
-        }
-        
         .container {
             background-color: var(--white);
             border-radius: 16px;
@@ -296,12 +232,6 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--primary-dark);
-        }
-        
-        .form-group .optional {
-            color: var(--text-light);
-            font-size: 0.9em;
-            font-weight: normal;
         }
         
         .form-control {
@@ -530,7 +460,7 @@
             padding: 30px;
             border-radius: 16px;
             width: 90%;
-            max-width: 500px;
+            max-width: 400px;
             box-shadow: var(--shadow-lg);
             position: relative;
             animation: slideIn 0.3s ease;
@@ -562,7 +492,7 @@
         
         @keyframes spin {
             0% { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            100% { transform: rotate(360deg); }
         }
         
         @keyframes fadeIn {
@@ -614,11 +544,6 @@
                 flex-wrap: wrap;
                 gap: 10px;
             }
-            
-            .user-menu-dropdown {
-                left: 50%;
-                transform: translateX(-50%);
-            }
         }
     </style>
 </head>
@@ -626,7 +551,7 @@
     <div class="main-container">
         <div class="header">
             <div class="header-logo">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9rhgPtuooaGs_nb76bjyyvT8xkUUuvkwbxG3YjZorCEXP1suduZp7b9Q3pv4qbaa3NwL5vnjVYRYxHGF7im6ABCwP-IL0wAHkyVTHBB2A0xoCMSDsNRDpKjmcmNnTw2DT8d7FQ0zvzXNr0XmOaX95M8uvmeKWGrNVtVvP6Z-0fjIxKIlDueLHkJrNB5g/s1150/1021.jpg" alt="شعار النظام">
+                <img src="https://via.placeholder.com/200x50/1e40af/ffffff?text=نظام+التعليقات" alt="شعار النظام">
             </div>
             
             <div id="authSection">
@@ -634,15 +559,12 @@
                     <button class="btn btn-outline" onclick="openModal('loginModal')">
                         <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
                     </button>
-                    <button class="btn" onclick="openModal('registerModal')">
-                        <i class="fas fa-user-plus"></i> إنشاء حساب
-                    </button>
                 </div>
             </div>
         </div>
         
         <div class="container">
-            <h1>EACR Confrance</h1>
+            <h1>نظام التعليقات المتطور</h1>
             
             <div id="alertBox" class="alert"></div>
             
@@ -680,62 +602,18 @@
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>تسجيل الدخول</h2>
+                <h2>تسجيل الدخول / إنشاء حساب</h2>
                 <button class="close-modal" onclick="closeModal('loginModal')">&times;</button>
             </div>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">البريد الإلكتروني</label>
-                    <input type="email" id="loginEmail" class="form-control" required placeholder="ادخل بريدك الإلكتروني">
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">كلمة المرور</label>
-                    <input type="password" id="loginPassword" class="form-control" required placeholder="ادخل كلمة المرور">
+                    <label for="userName">اسم المستخدم</label>
+                    <input type="text" id="userName" class="form-control" required placeholder="ادخل اسمك">
+                    <small style="color: var(--text-light); display: block; margin-top: 5px;">اكتب "moaz" لتصبح مسؤولاً</small>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                    <i class="fas fa-sign-in-alt"></i> دخول / إنشاء حساب
                 </button>
-                <div style="text-align: center; margin-top: 15px;">
-                    <span style="color: var(--text-light);">ليس لديك حساب؟ </span>
-                    <a href="#" onclick="switchToRegister()" style="color: var(--primary-color); text-decoration: none;">إنشاء حساب جديد</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal لإنشاء حساب -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>إنشاء حساب جديد</h2>
-                <button class="close-modal" onclick="closeModal('registerModal')">&times;</button>
-            </div>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="registerName">الاسم</label>
-                    <input type="text" id="registerName" class="form-control" required placeholder="ادخل اسمك">
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">البريد الإلكتروني</label>
-                    <input type="email" id="registerEmail" class="form-control" required placeholder="ادخل بريدك الإلكتروني">
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">كلمة المرور</label>
-                    <input type="password" id="registerPassword" class="form-control" required placeholder="اختر كلمة مرور">
-                </div>
-                <div class="form-group">
-                    <label for="registerAvatar">رابط الصورة الشخصية <span class="optional">(اختياري)</span></label>
-                    <input type="url" id="registerAvatar" class="form-control" 
-                           placeholder="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9rhgPtuooaGs_nb76bjyyvT8xkUUuvkwbxG3YjZorCEXP1suduZp7b9Q3pv4qbaa3NwL5vnjVYRYxHGF7im6ABCwP-IL0wAHkyVTHBB2A0xoCMSDsNRDpKjmcmNnTw2DT8d7FQ0zvzXNr0XmOaX95M8uvmeKWGrNVtVvP6Z-0fjIxKIlDueLHkJrNB5g/s1150/1021.jpg">
-                    <small style="color: var(--text-light); display: block; margin-top: 5px;">اترك هذا الحقل فارغاً لاستخدام صورة افتراضية</small>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <i class="fas fa-user-plus"></i> إنشاء حساب
-                </button>
-                <div style="text-align: center; margin-top: 15px;">
-                    <span style="color: var(--text-light);">لديك حساب بالفعل؟ </span>
-                    <a href="#" onclick="switchToLogin()" style="color: var(--primary-color); text-decoration: none;">تسجيل الدخول</a>
-                </div>
             </form>
         </div>
     </div>
@@ -763,15 +641,8 @@
         // Reference to the comments in the database
         const commentsRef = database.ref('comments');
         
-        // بيانات المستخدمين (سيتم حفظها في localStorage)
-        let users = JSON.parse(localStorage.getItem('commentSystemUsers')) || [];
-        
         // المستخدم الحالي
         let currentUser = JSON.parse(localStorage.getItem('commentSystemCurrentUser')) || null;
-        
-        // إعدادات النظام
-        const ADMIN_EMAIL = 'mozogohary47@gmail.com';
-        const ADMIN_PASSWORD = 'gohary';
         
         // عناصر DOM
         const authSection = document.getElementById('authSection');
@@ -781,7 +652,6 @@
         const sortButton = document.getElementById('sortButton');
         const alertBox = document.getElementById('alertBox');
         const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
         const commentForm = document.getElementById('commentForm');
         
         let sortNewestFirst = true;
@@ -795,37 +665,6 @@
             
             // تحميل التعليقات من Firebase
             loadComments();
-            
-            // إضافة مستخدم الأدمن إذا لم يكن موجوداً
-            const adminExists = users.some(user => user.email === ADMIN_EMAIL);
-            if (!adminExists) {
-                users.push({
-                    name: 'مدير النظام',
-                    email: ADMIN_EMAIL,
-                    password: ADMIN_PASSWORD,
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-                    isAdmin: true
-                });
-                saveUsers();
-            }
-            
-            // إضافة مستخدم تجريبي للاختبار
-            const testUserExists = users.some(user => user.email === 'test@example.com');
-            if (!testUserExists) {
-                users.push({
-                    name: 'مستخدم تجريبي',
-                    email: 'test@example.com',
-                    password: '123456',
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-                    isAdmin: false
-                });
-                saveUsers();
-            }
-        }
-        
-        // حفظ المستخدمين في localStorage
-        function saveUsers() {
-            localStorage.setItem('commentSystemUsers', JSON.stringify(users));
         }
         
         // حفظ المستخدم الحالي في localStorage
@@ -875,46 +714,19 @@
             document.getElementById(modalId).style.display = 'none';
         }
         
-        // التبديل بين نماذج تسجيل الدخول وإنشاء الحساب
-        function switchToRegister() {
-            closeModal('loginModal');
-            openModal('registerModal');
-        }
-        
-        function switchToLogin() {
-            closeModal('registerModal');
-            openModal('loginModal');
-        }
-        
         // تحديث واجهة المستخدم حسب حالة التسجيل
         function updateAuthUI() {
             if (currentUser) {
                 // إذا كان المستخدم مسجلاً
                 authSection.innerHTML = `
                     <div class="user-info">
-                        <div class="user-menu">
-                            <div class="user-menu-toggle" onclick="toggleUserMenu()">
-                                <img src="${currentUser.avatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}" 
-                                     class="user-avatar" alt="صورة المستخدم">
-                                <span>${currentUser.name}</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="user-menu-dropdown" id="userMenuDropdown">
-                                <div class="user-menu-item">
-                                    <i class="fas fa-user"></i>
-                                    <span>الملف الشخصي</span>
-                                </div>
-                                <div class="user-menu-item">
-                                    <i class="fas fa-cog"></i>
-                                    <span>الإعدادات</span>
-                                </div>
-                                <div class="user-menu-item logout" onclick="logout()">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                    <span>تسجيل الخروج</span>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="${currentUser.avatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}" 
+                             class="user-avatar" alt="صورة المستخدم">
+                        <span>${currentUser.name}</span>
                         ${currentUser.isAdmin ? '<span class="admin-badge">ADMIN</span>' : ''}
+                        <button class="btn btn-outline" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                        </button>
                     </div>
                 `;
                 commentFormSection.style.display = 'block';
@@ -925,96 +737,41 @@
                         <button class="btn btn-outline" onclick="openModal('loginModal')">
                             <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
                         </button>
-                        <button class="btn" onclick="openModal('registerModal')">
-                            <i class="fas fa-user-plus"></i> إنشاء حساب
-                        </button>
                     </div>
                 `;
                 commentFormSection.style.display = 'none';
             }
         }
         
-        // تبديل عرض قائمة المستخدم
-        function toggleUserMenu() {
-            const dropdown = document.getElementById('userMenuDropdown');
-            dropdown.classList.toggle('show');
-            
-            // إغلاق القائمة عند النقر خارجها
-            document.addEventListener('click', function closeMenu(e) {
-                if (!dropdown.contains(e.target) && !e.target.closest('.user-menu-toggle')) {
-                    dropdown.classList.remove('show');
-                    document.removeEventListener('click', closeMenu);
-                }
-            });
-        }
-        
-        // تسجيل الدخول
-        function login(email, password) {
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                currentUser = user;
-                saveCurrentUser();
-                updateAuthUI();
-                closeModal('loginModal');
-                showAlert(`مرحباً بعودتك ${user.name}`, 'success');
-                return true;
-            } else {
-                showAlert('البريد الإلكتروني أو كلمة المرور غير صحيحة', 'error');
-                return false;
-            }
-        }
-        
-        // تسجيل الخروج
-        function logout() {
-            currentUser = null;
-            saveCurrentUser();
-            updateAuthUI();
-            showAlert('تم تسجيل الخروج بنجاح', 'success');
-        }
-        
-        // إنشاء حساب جديد
-        function register(name, email, password, avatar) {
-            // التحقق من صحة البريد الإلكتروني
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showAlert('صيغة البريد الإلكتروني غير صحيحة', 'error');
-                return false;
-            }
-            
-            // التحقق من قوة كلمة المرور
-            if (password.length < 6) {
-                showAlert('كلمة المرور يجب أن تحتوي على 6 أحرف على الأقل', 'error');
-                return false;
-            }
-            
-            // التحقق من عدم وجود حساب بنفس البريد الإلكتروني
-            const userExists = users.some(u => u.email === email);
-            
-            if (userExists) {
-                showAlert('هذا البريد الإلكتروني مستخدم بالفعل', 'error');
+        // تسجيل الدخول وإنشاء حساب
+        function login(name) {
+            if (!name || name.trim() === '') {
+                showAlert('يرجى إدخال اسم المستخدم', 'error');
                 return false;
             }
             
             // إنشاء المستخدم الجديد
             const newUser = {
-                name,
-                email,
-                password,
-                avatar: avatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-                isAdmin: email === ADMIN_EMAIL
+                name: name.trim(),
+                avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+                isAdmin: name.trim().toLowerCase() === 'moaz'
             };
-            
-            users.push(newUser);
-            saveUsers();
             
             // تسجيل الدخول تلقائياً
             currentUser = newUser;
             saveCurrentUser();
             updateAuthUI();
-            closeModal('registerModal');
-            showAlert(`تم إنشاء حسابك بنجاح ${name}`, 'success');
+            closeModal('loginModal');
+            showAlert(`مرحباً ${newUser.name} ${newUser.isAdmin ? '(مدير)' : ''}`, 'success');
             return true;
+        }
+        
+        // تسجيل الخروج - تم إصلاح هذه الدالة لجعلها في النطاق العام
+        window.logout = function() {
+            currentUser = null;
+            saveCurrentUser();
+            updateAuthUI();
+            showAlert('تم تسجيل الخروج بنجاح', 'success');
         }
         
         // إضافة تعليق جديد إلى Firebase
@@ -1025,7 +782,7 @@
             }
             
             const newComment = {
-                userId: currentUser.email,
+                userId: currentUser.name,
                 userName: currentUser.name,
                 userAvatar: currentUser.avatar,
                 text: text,
@@ -1053,7 +810,7 @@
             }
             
             const newReply = {
-                userId: currentUser.email,
+                userId: currentUser.name,
                 userName: currentUser.name,
                 userAvatar: currentUser.avatar,
                 text: text,
@@ -1072,14 +829,14 @@
                 });
         }
         
-        // الإعجاب بالتعليق في Firebase
-        function likeComment(commentId, currentLikes, likedBy) {
+        // الإعجاب بالتعليق في Firebase - تم إصلاح هذه الدالة
+        window.likeComment = function(commentId, currentLikes, likedBy) {
             if (!currentUser) {
                 showAlert('يجب تسجيل الدخول أولاً', 'error');
                 return;
             }
             
-            const userEmail = currentUser.email;
+            const userName = currentUser.name;
             
             // تحويل likedBy من سلسلة JSON إلى كائن إذا لزم الأمر
             let likedByObj = {};
@@ -1093,17 +850,17 @@
                 likedByObj = likedBy || {};
             }
             
-            const alreadyLiked = likedByObj && likedByObj[userEmail];
+            const alreadyLiked = likedByObj && likedByObj[userName];
             
             const updates = {};
             if (alreadyLiked) {
                 // إلغاء الإعجاب
                 updates[`comments/${commentId}/likes`] = (currentLikes || 0) - 1;
-                updates[`comments/${commentId}/likedBy/${userEmail}`] = null;
+                updates[`comments/${commentId}/likedBy/${userName}`] = null;
             } else {
                 // إضافة إعجاب
                 updates[`comments/${commentId}/likes`] = (currentLikes || 0) + 1;
-                updates[`comments/${commentId}/likedBy/${userEmail}`] = true;
+                updates[`comments/${commentId}/likedBy/${userName}`] = true;
             }
             
             database.ref().update(updates)
@@ -1113,7 +870,7 @@
         }
         
         // حذف تعليق من Firebase (للأدمن فقط)
-        function deleteComment(commentId) {
+        window.deleteComment = function(commentId) {
             if (!currentUser || !currentUser.isAdmin) {
                 showAlert('ليس لديك صلاحية لحذف التعليقات', 'error');
                 return;
@@ -1134,7 +891,7 @@
         }
         
         // حذف رد من Firebase (للأدمن فقط)
-        function deleteReply(commentId, replyId) {
+        window.deleteReply = function(commentId, replyId) {
             if (!currentUser || !currentUser.isAdmin) {
                 showAlert('ليس لديك صلاحية لحذف الردود', 'error');
                 return;
@@ -1177,9 +934,9 @@
             let commentsHTML = '';
             
             sortedComments.forEach(comment => {
-                const isLiked = comment.likedBy && comment.likedBy[currentUser?.email];
+                const isLiked = comment.likedBy && comment.likedBy[currentUser?.name];
                 const isAdmin = currentUser && currentUser.isAdmin;
-                const isCommentOwner = currentUser && currentUser.email === comment.userId;
+                const isCommentOwner = currentUser && currentUser.name === comment.userId;
                 
                 // معالجة الردود
                 let repliesHTML = '';
@@ -1221,7 +978,7 @@
                             <div class="comment-author-info">
                                 <div class="comment-author">
                                     ${comment.userName}
-                                    ${comment.userId === ADMIN_EMAIL ? '<span class="admin-badge">ADMIN</span>' : ''}
+                                    ${comment.userId.toLowerCase() === 'moaz' ? '<span class="admin-badge">ADMIN</span>' : ''}
                                 </div>
                                 <div class="comment-date">${formatDate(comment.timestamp)}</div>
                             </div>
@@ -1328,20 +1085,8 @@
         // أحداث النماذج
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            login(email, password);
-        });
-        
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const avatar = document.getElementById('registerAvatar').value;
-            
-            // جعل حقل الصورة الشخصية اختياريًا تمامًا
-            register(name, email, password, avatar || '');
+            const name = document.getElementById('userName').value;
+            login(name);
         });
         
         commentForm.addEventListener('submit', function(e) {
@@ -1370,19 +1115,6 @@
         
         // تهيئة التطبيق عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', initApp);
-        
-        // جعل الدوال متاحة عالمياً
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-        window.logout = logout;
-        window.likeComment = likeComment;
-        window.deleteComment = deleteComment;
-        window.deleteReply = deleteReply;
-        window.toggleReplyForm = toggleReplyForm;
-        window.submitReply = submitReply;
-        window.toggleUserMenu = toggleUserMenu;
-        window.switchToRegister = switchToRegister;
-        window.switchToLogin = switchToLogin;
     </script>
 </body>
 </html>
